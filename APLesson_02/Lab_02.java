@@ -8,7 +8,7 @@ public class Lab_02
 		
 		String name = "Karina Camp";
 		String address = "123 Sunflower Lane";
-		String city = "Sunshine Town";
+		String city = "Sunshine Town, CA ";
 		String zip = "12345";
 		
 		int num1 = 5;
@@ -17,7 +17,7 @@ public class Lab_02
 		int surfaceArea = (2 * num1 * num2) + (2 * num2 * num3)+ (2 * num1 * num3);
 		
 		System.out.println("The product is" + " " + product);
-		System.out.println(name + "\n" + address + "\n" + city + "\n" + zip);
-		System.out.println("The surface area of your rectangle is" + " " + surfaceArea);
+		System.out.println("\n" + name + "\n" + address + "\n" + city + zip);
+		System.out.println("\nThe surface area of your rectangle is" + " " + surfaceArea);
 	}
 }
