@@ -5,6 +5,7 @@ public class Rectangle
 	static double length;
 	static double width;
 	static String var5 = " ft around";
+	static double area;
 	
 	public static void main(String[]args)
 	{
@@ -13,16 +14,18 @@ public class Rectangle
 		length = kb.nextInt();
 		System.out.println("Please enter width");
 		width = kb.nextDouble();
+		
+		calcPerim();
 		print();
 	}
 	
-	public static double calcPerim()
+	public static void calcPerim()
 	{
-		return(2*length + 2*width);
+		area = (2*length + 2*width);
 	}
 	
 	public static void print()
 	{
-		System.out.println(var1 + calcPerim() + var5);
+		System.out.printf(var1 + "%10.5f", area, var5);
 	}
 }
