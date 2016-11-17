@@ -16,24 +16,19 @@ public class password
 		System.out.println("Enter password: ");
 		String choice2 = kb.next();
 		
-		if(choice1.equals("computer"))
+		if(choice1.equals("computer")&&choice2.equals("karina"))
 		{
-			if (choice2.equals("karina"))
-			{
-				System.out.println("You are granted access!");
-			}
-			else
-			{
-				System.out.println("Your password is incorrect!");
-				passCheck();
-			}
+			System.out.println("You are granted access!");
 		}
 		else 
 		{
-			if (choice2.equals("karina"))
+			if (choice1.equals("computer"))
+			{
+				System.out.println("Your password is incorrect!");
+			}
+			else if (choice2.equals("karina"))
 			{
 				System.out.println("Your username is incorrect!");
-				passCheck();
 			}
 			else
 			{
