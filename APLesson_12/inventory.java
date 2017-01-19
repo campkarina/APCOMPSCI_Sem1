@@ -14,7 +14,7 @@ public class inventory
 		name = n;
 		category = "food";
 		price = 5.00;
-		UPC = (int)(Math.random() * 1000000) + 1;
+		UPC = (int)(Math.random() * 1000000000);
 	}
 	
 	public inventory(String m, String n, String c, double p)
@@ -23,7 +23,7 @@ public class inventory
 		name = n;
 		category = c;
 		price = p;
-		UPC = (int)(Math.random() * 1000000) + 1;
+		UPC = (int)(Math.random() * 1000000000);
 	}
 	
 	public String toString()
