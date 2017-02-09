@@ -7,7 +7,7 @@ public class ToyRunner
 	{
         ToyStore inv = new ToyStore("Hotwheel, Car, G.I.Joe, Action Figure, PennyRacer, Car, Matchbox, Car, Star Wars, Action Figure, Pullback, Car, Star Wars, Action Figure");
         System.out.println(inv);
-        System.out.println(inv.getMostFrequentToy());
-        System.out.println(inv.getMostFrequentType());
+        System.out.println("\nMost Frequent Toy: " + inv.getMostFrequentToy());
+        System.out.println("Most Frequent Type: " + inv.getMostFrequentType());
     }
 }
