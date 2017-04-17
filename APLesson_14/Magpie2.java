@@ -32,22 +32,109 @@ public class Magpie2
 			response = "Tell me more about your pet.";
 		}
 		
-		else if (findKeyword(statement, "Robinette") >= 0)
-
+		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
-			response = "He sounds like a pretty dank teacher.";
+			response = transformIWantToStatement(statement);
 		}
-
-		else if (statement.trim().length() == 0)
+		
+		else if (findKeyword(statement, "I want", 0) >= 0)
 		{
-			response = "Say something, please.";
+			response = transformIWantStatement(statement);
 		}
 
 		else
 		{
-			response = getRandomResponse();
+			int psn = findKeyword(statement, "you", 0);
+
+			if (psn >= 0
+				&& findKeyword(statement, "me", psn) >= 0)
+			{
+				response = transformYouMeStatement(statement);
+			}
+			else
+			{
+				psn = findKeyword(statement, "i", 0);
+
+				if (psn >= 0
+						&& findKeyword(statement, "you", psn) >= 0)
+				{
+					response = transformIYouStatement(statement);
+				}
+				else
+				{
+					response = getRandomResponse();
+				}
+			}
 		}
 		return response;
+	}
+	
+	private String transformIWantToStatement(String statement)
+	{
+		statement = statement.trim();
+		
+		String lastChar = statement.substring(statement.length() - 1);
+				
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement.length() - 1);
+		}
+		
+		int psn = findKeyword (statement, "I want to", 0);
+		String restOfStatement = statement.substring(psn + 9).trim();
+		return "What would it mean to " + restOfStatement + "?";
+	}
+
+	private String transformIWantStatement(String statement)
+	{
+		statement = statement.trim();
+		
+		String lastChar = statement.substring(statement.length() - 1);
+				
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement.length() - 1);
+		}
+		
+		int psn = findKeyword (statement, "I want", 0);
+		String restOfStatement = statement.substring(psn + 6).trim();
+		return "Would you really be happy if you had " + restOfStatement + "?";
+	}
+	
+	private String transformYouMeStatement(String statement)
+	{
+		statement = statement.trim();
+		
+		String lastChar = statement.substring(statement.length() - 1);
+				
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement.length() - 1);
+		}
+		
+		int psnOfYou = findKeyword (statement, "you", 0);
+		int psnOfMe = findKeyword (statement, "me", psnOfYou + 3);
+		
+		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
+		return "What makes you think that I " + restOfStatement + " you?";
+	}
+	
+	private String transformIYouStatement(String statement)
+	{
+		statement = statement.trim();
+		
+		String lastChar = statement.substring(statement.length() - 1);
+				
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement.length() - 1);
+		}
+		
+		int psnOfI = findKeyword (statement, "I", 0);
+		int psnOfYou = findKeyword (statement, "you", psnOfI);
+		
+		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
+		return "Why do you " + restOfStatement + " me?";
 	}
 
 	private int findKeyword(String statement, String goal, int startPos)
@@ -95,13 +182,21 @@ public class Magpie2
 		String response = "";
 		
 		if (whichResponse == 0)
+		{
 			response = "Interesting, tell me more.";
+		}
 		else if (whichResponse == 1)
+		{
 			response = "Hmmm.";
+		}
 		else if (whichResponse == 2)
+		{
 			response = "Do you really think so?";
+		}
 		else if (whichResponse == 3)
+		{
 			response = "You don't say.";
+		}
 
 		return response;
 	}
